@@ -23,11 +23,19 @@ export class Usuario extends Component {
             <h4>Usuarios</h4>
           </div>
           <div className="card-body">
-            {usuarios.map(x => (
-              <p key="usuario_id">
-                {x.nome} {x.sobrenome}
-              </p>
-            ))}
+            <ul className="list-group">
+              {usuarios.map(x => (
+                <li key="usuario_id" className="list-group-item">
+                  {x.nome} {x.sobrenome}
+                  <button style={{ float: "right" }}>
+                    <i className="far fa-trash-alt" />
+                  </button>
+                  <button style={{ float: "right" }}>
+                    <i class="fas fa-pencil-alt" />
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

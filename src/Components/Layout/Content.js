@@ -10,10 +10,10 @@ export class Content extends Component {
       <div>
         <div className="container">
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-md-5">
               <Usuario />
             </div>
-            <div className="col-md-9">
+            <div className="col-md-7">
               <div className="row">
                 <div className="col-md-6">
                   <Cliente />
