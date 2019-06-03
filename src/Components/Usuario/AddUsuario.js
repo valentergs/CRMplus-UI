@@ -137,7 +137,7 @@ export class AddUsuario extends Component {
           <label style={{ marginLeft: "4px" }}>Ativo</label>
         </div>
         <button type="submit" className="btn btn-primary">
-          Enviar
+          Adicionar
         </button>
       </form>
     );

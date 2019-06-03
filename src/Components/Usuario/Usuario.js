@@ -38,55 +38,63 @@ export class Usuario extends Component {
   render() {
     return (
       <div>
-        <div className="card my-3">
-          <div className="card-header">
-            <h4>Usuarios</h4>
-          </div>
-          <div className="card-body">
-            <ul className="list-group">
-              <button type="button" className="btn btn-outline-primary">
-                Adicionar Usuário
-              </button>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-9">
+              <div className="card my-3">
+                <div className="card-header">
+                  <h4>Usuarios</h4>
+                </div>
+                <div className="card-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Sobrenome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Departamento</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.usuarioState
+                        // // Sort the list array - if string
+                        // .sort(function(a, b) {
+                        //   var nameA = a.sobrenome.toUpperCase(); // ignore upper and lowercase
+                        //   var nameB = b.sobrenome.toUpperCase(); // ignore upper and lowercase
+                        //   if (nameA < nameB) {
+                        //     return -1;
+                        //   }
+                        //   if (nameA > nameB) {
+                        //     return 1;
+                        //   }
+
+                        //   // names must be equal
+                        //   return 0;
+                        // })
+                        // // Sort the list array - if integer
+                        .sort(function(a, b) {
+                          return b.usuario_id - a.usuario_id;
+                        })
+                        .map(x => (
+                          <tr>
+                            <td>{x.nome}</td>
+                            <td>{x.sobrenome}</td>
+                            <td>{x.email}</td>
+                            <td>{x.departamento}</td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3">
               <div className="card my-3">
                 <div className="card-body">
                   <AddUsuario addUsuario={this.addUsuario} />
                 </div>
               </div>
-
-              {this.state.usuarioState
-                // // Sort the list array - if string
-                // .sort(function(a, b) {
-                //   var nameA = a.sobrenome.toUpperCase(); // ignore upper and lowercase
-                //   var nameB = b.sobrenome.toUpperCase(); // ignore upper and lowercase
-                //   if (nameA < nameB) {
-                //     return -1;
-                //   }
-                //   if (nameA > nameB) {
-                //     return 1;
-                //   }
-
-                //   // names must be equal
-                //   return 0;
-                // })
-                // // Sort the list array - if integer
-                .sort(function(a, b) {
-                  return b.usuario_id - a.usuario_id;
-                })
-                .map(x => (
-                  <li key={x.usuario_id} className="list-group-item">
-                    {x.sobrenome}, {x.nome}
-                    <button
-                      style={{ float: "right" }}
-                      onClick={this.delUsuario.bind(this, x.usuario_id)}
-                    >
-                      <i className="far fa-trash-alt" />
-                    </button>
-                    <button style={{ float: "right" }}>
-                      <i className="fas fa-pencil-alt" />
-                    </button>
-                  </li>
-                ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
