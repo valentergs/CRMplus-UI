@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import AddUsuario from "./AddUsuario";
 
 export class Usuario extends Component {
   state = {
@@ -26,6 +27,14 @@ export class Usuario extends Component {
       );
   };
 
+  addUsuario = addUsuarioState => {
+    axios
+      .post("http://localhost:8080/usuario/add", addUsuarioState)
+      .then(res =>
+        this.setState({ usuarioState: [...this.state.usuarioState, res.data] })
+      );
+  };
+
   render() {
     return (
       <div>
@@ -38,6 +47,12 @@ export class Usuario extends Component {
               <button type="button" className="btn btn-outline-primary">
                 Adicionar Usuário
               </button>
+              <div className="card my-3">
+                <div className="card-body">
+                  <AddUsuario addUsuario={this.addUsuario} />
+                </div>
+              </div>
+
               {this.state.usuarioState
                 // // Sort the list array - if string
                 // .sort(function(a, b) {
@@ -53,7 +68,7 @@ export class Usuario extends Component {
                 //   // names must be equal
                 //   return 0;
                 // })
-                // // Sort the list array - if string
+                // // Sort the list array - if integer
                 .sort(function(a, b) {
                   return b.usuario_id - a.usuario_id;
                 })
