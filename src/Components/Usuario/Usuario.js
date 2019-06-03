@@ -3,19 +3,30 @@ import axios from "axios";
 
 export class Usuario extends Component {
   state = {
-    usuarios: []
+    usuarioState: []
   };
 
   componentDidMount() {
     axios.get("http://localhost:8080/usuario").then(res =>
       this.setState({
-        usuarios: res.data
+        usuarioState: res.data
       })
     );
   }
 
+  delUsuario = usuario_id => {
+    axios
+      .delete(`http://localhost:8080/usuario/delete/${usuario_id}`)
+      .then(res =>
+        this.setState({
+          usuarioState: [
+            ...this.state.usuarioState.filter(z => z.usuario_id !== usuario_id)
+          ]
+        })
+      );
+  };
+
   render() {
-    const { usuarios } = this.state;
     return (
       <div>
         <div className="card my-3">
@@ -24,14 +35,20 @@ export class Usuario extends Component {
           </div>
           <div className="card-body">
             <ul className="list-group">
-              {usuarios.map(x => (
-                <li key="usuario_id" className="list-group-item">
-                  {x.nome} {x.sobrenome}
-                  <button style={{ float: "right" }}>
+              <button type="button" className="btn btn-outline-primary">
+                Adicionar Usuário
+              </button>
+              {this.state.usuarioState.map(x => (
+                <li key={x.usuario_id} className="list-group-item">
+                  {x.usuario_id} - {x.nome} {x.sobrenome}
+                  <button
+                    style={{ float: "right" }}
+                    onClick={this.delUsuario.bind(this, x.usuario_id)}
+                  >
                     <i className="far fa-trash-alt" />
                   </button>
                   <button style={{ float: "right" }}>
-                    <i class="fas fa-pencil-alt" />
+                    <i className="fas fa-pencil-alt" />
                   </button>
                 </li>
               ))}

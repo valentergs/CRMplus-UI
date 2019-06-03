@@ -6,7 +6,7 @@ export class Header extends Component {
       <div>
         {/* <h3>This is a HEADER</h3> */}
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             CRMplus
           </a>
           <button
@@ -23,17 +23,17 @@ export class Header extends Component {
           <div className="collapse navbar-collapse" id="navbarColor02">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a href="/" className="nav-link">
                   Contato
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a href="/" className="nav-link">
                   Relatorio
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a href="/" className="nav-link">
                   Forecast
                 </a>
               </li>
