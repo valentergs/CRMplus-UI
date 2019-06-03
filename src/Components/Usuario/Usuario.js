@@ -38,20 +38,39 @@ export class Usuario extends Component {
               <button type="button" className="btn btn-outline-primary">
                 Adicionar Usuário
               </button>
-              {this.state.usuarioState.map(x => (
-                <li key={x.usuario_id} className="list-group-item">
-                  {x.usuario_id} - {x.nome} {x.sobrenome}
-                  <button
-                    style={{ float: "right" }}
-                    onClick={this.delUsuario.bind(this, x.usuario_id)}
-                  >
-                    <i className="far fa-trash-alt" />
-                  </button>
-                  <button style={{ float: "right" }}>
-                    <i className="fas fa-pencil-alt" />
-                  </button>
-                </li>
-              ))}
+              {this.state.usuarioState
+                // // Sort the list array - if string
+                // .sort(function(a, b) {
+                //   var nameA = a.sobrenome.toUpperCase(); // ignore upper and lowercase
+                //   var nameB = b.sobrenome.toUpperCase(); // ignore upper and lowercase
+                //   if (nameA < nameB) {
+                //     return -1;
+                //   }
+                //   if (nameA > nameB) {
+                //     return 1;
+                //   }
+
+                //   // names must be equal
+                //   return 0;
+                // })
+                // // Sort the list array - if string
+                .sort(function(a, b) {
+                  return b.usuario_id - a.usuario_id;
+                })
+                .map(x => (
+                  <li key={x.usuario_id} className="list-group-item">
+                    {x.sobrenome}, {x.nome}
+                    <button
+                      style={{ float: "right" }}
+                      onClick={this.delUsuario.bind(this, x.usuario_id)}
+                    >
+                      <i className="far fa-trash-alt" />
+                    </button>
+                    <button style={{ float: "right" }}>
+                      <i className="fas fa-pencil-alt" />
+                    </button>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
