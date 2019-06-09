@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import AddUsuario from "./AddUsuario";
+import SearchUsuario from "./SearchUsuario";
 
 export class Usuario extends Component {
   state = {
-    usuarioState: []
+    usuarioState: [],
+    addUsuarioBtn: true,
+    toggleAddUsuarioForm: true
   };
 
   componentDidMount() {
@@ -35,18 +38,77 @@ export class Usuario extends Component {
       );
   };
 
+  searchUsuario = text => {
+    axios
+      .get(`http://localhost:8080/search/usuario?q=${text}`)
+      .then(res => this.setState({ usuarioState: res.data }));
+  };
+
+  clearUsers = () => this.componentDidMount();
+
+  handleClick = () => {
+    this.setState(state => ({ addUsuarioBtn: !state.addUsuarioBtn }));
+    this.setState(state => ({
+      toggleAddUsuarioForm: !state.toggleAddUsuarioForm
+    }));
+  };
+
   render() {
     return (
       <div>
         <div className="container">
           <div className="row">
-            <div className="col-md-9">
+            <div className="col-md-12 col-sm-12">
               <div className="card my-3">
                 <div className="card-header">
-                  <h4>Usuarios</h4>
+                  <h4>Busca</h4>
                 </div>
                 <div className="card-body">
-                  <table class="table">
+                  <SearchUsuario
+                    searchUsuario={this.searchUsuario}
+                    clearUsers={this.clearUsers}
+                    showClearButton={
+                      this.state.usuarioState.length > 0 ? true : false
+                    }
+                  />
+                </div>
+              </div>
+              <div className="card my-3">
+                <div className="card-header">
+                  <h4>
+                    Usuarios
+                    <button
+                      onClick={this.handleClick}
+                      style={{ float: "right" }}
+                    >
+                      {this.state.addUsuarioBtn ? (
+                        <i class="fas fa-plus" />
+                      ) : (
+                        <i class="fas fa-minus" />
+                      )}
+                    </button>
+                  </h4>
+                </div>
+                <div className="card-body">
+                  {this.state.toggleAddUsuarioForm ? (
+                    <div
+                      className="card-body"
+                      id="addUsuario-card"
+                      style={{ display: "none" }}
+                    >
+                      <AddUsuario addUsuario={this.addUsuario} />
+                    </div>
+                  ) : (
+                    <div
+                      className="card-body"
+                      id="addUsuario-card"
+                      style={{ display: "block" }}
+                    >
+                      <AddUsuario addUsuario={this.addUsuario} />
+                    </div>
+                  )}
+
+                  <table className="table table-sm">
                     <thead>
                       <tr>
                         <th scope="col">Nome</th>
@@ -76,7 +138,7 @@ export class Usuario extends Component {
                           return b.usuario_id - a.usuario_id;
                         })
                         .map(x => (
-                          <tr>
+                          <tr key={x.usuario_id}>
                             <td>{x.nome}</td>
                             <td>{x.sobrenome}</td>
                             <td>{x.email}</td>
@@ -85,13 +147,6 @@ export class Usuario extends Component {
                         ))}
                     </tbody>
                   </table>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div className="card my-3">
-                <div className="card-body">
-                  <AddUsuario addUsuario={this.addUsuario} />
                 </div>
               </div>
             </div>

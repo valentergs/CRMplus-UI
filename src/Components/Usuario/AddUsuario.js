@@ -15,7 +15,6 @@ export class AddUsuario extends Component {
   onSubmit = e => {
     e.preventDefault();
     this.props.addUsuario(this.state);
-    console.log(this.state);
     this.setState({
       nome: "",
       sobrenome: "",
