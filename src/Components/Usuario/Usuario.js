@@ -46,7 +46,7 @@ export class Usuario extends Component {
 
   clearUsers = () => this.componentDidMount();
 
-  handleClick = () => {
+  addUsuarioBtnClick = () => {
     this.setState(state => ({ addUsuarioBtn: !state.addUsuarioBtn }));
     this.setState(state => ({
       toggleAddUsuarioForm: !state.toggleAddUsuarioForm
@@ -78,13 +78,13 @@ export class Usuario extends Component {
                   <h4>
                     Usuarios
                     <button
-                      onClick={this.handleClick}
+                      onClick={this.addUsuarioBtnClick}
                       style={{ float: "right" }}
                     >
                       {this.state.addUsuarioBtn ? (
-                        <i class="fas fa-plus" />
+                        <i className="fas fa-plus" />
                       ) : (
-                        <i class="fas fa-minus" />
+                        <i className="fas fa-minus" />
                       )}
                     </button>
                   </h4>
