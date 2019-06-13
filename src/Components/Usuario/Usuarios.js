@@ -15,7 +15,7 @@ const Usuarios = () => {
     <Fragment>
       <div className="container">
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-7">
             {usuarioState !== null ? (
               usuarioState.map(usuario => (
                 <UsuarioItem usuario={usuario} key={usuario.usuario_id} />
@@ -24,7 +24,7 @@ const Usuarios = () => {
               <Spinner />
             )}
           </div>
-          <div className="col-md-4" />
+          <div className="col-md-5" />
         </div>
       </div>
     </Fragment>

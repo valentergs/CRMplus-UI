@@ -5,9 +5,10 @@ export class Header extends Component {
   render() {
     return (
       <div>
-        {/* <h3>This is a HEADER</h3> */}
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <Link to="/">CRMplus</Link>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <Link className="nav-link" to="/">
+            CRMplus
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -22,10 +23,19 @@ export class Header extends Component {
           <div className="collapse navbar-collapse" id="navbarColor02">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link to="/">Home</Link>
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to="/about">About</Link>
+                <Link className="nav-link" to="/usuarios">
+                  Usuarios
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">
+                  About
+                </Link>
               </li>
             </ul>
           </div>

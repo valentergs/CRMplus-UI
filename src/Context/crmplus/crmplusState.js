@@ -29,9 +29,7 @@ const CrmplusState = props => {
 
   // Delete Usuario
   const delUsuario = usuario_id => {
-    const res = axios.delete(
-      `http://localhost:8080/usuario/delete/${usuario_id}`
-    );
+    axios.delete(`http://localhost:8080/usuario/delete/${usuario_id}`);
     dispatch({
       type: DEL_USUARIO,
       payload: usuario_id
@@ -40,7 +38,7 @@ const CrmplusState = props => {
 
   // Add Usuario
   const addUsuario = usuario => {
-    const res = axios.post("http://localhost:8080/usuario/add");
+    axios.post("http://localhost:8080/usuario/add");
     dispatch({
       type: ADD_USUARIO,
       payload: usuario
@@ -58,7 +56,6 @@ const CrmplusState = props => {
   return (
     <CrmplusContext.Provider
       value={{
-        getUsuarios: state.getUsuarios,
         usuarioState: state.usuarioState,
         addUsuarioBtn: state.addUsuarioBtn,
         toggleAddUsuarioForm: state.toggleAddUsuarioForm,

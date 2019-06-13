@@ -1,11 +1,7 @@
-import React, { useContext } from "react";
-import CRMplusContext from "../../Context/crmplus/crmplusContext";
+import React from "react";
 
 const UsuarioItem = ({ usuario }) => {
-  const crmplusContext = useContext(CRMplusContext);
-
   const {
-    usuario_id,
     nome,
     sobrenome,
     email,
@@ -34,9 +30,15 @@ const UsuarioItem = ({ usuario }) => {
               <p>
                 <span style={{ float: "left" }}>
                   {superuser === true ? (
-                    <i style={{ color: "green" }} class="far fa-check-circle" />
+                    <i
+                      style={{ color: "green" }}
+                      className="far fa-check-circle"
+                    />
                   ) : (
-                    <i style={{ color: "red" }} class="far fa-times-circle" />
+                    <i
+                      style={{ color: "red" }}
+                      className="far fa-times-circle"
+                    />
                   )}
                   {"  "}Superuser
                 </span>
@@ -46,9 +48,15 @@ const UsuarioItem = ({ usuario }) => {
               <p>
                 <span style={{ float: "left" }}>
                   {ativo === true ? (
-                    <i style={{ color: "green" }} class="far fa-check-circle" />
+                    <i
+                      style={{ color: "green" }}
+                      className="far fa-check-circle"
+                    />
                   ) : (
-                    <i style={{ color: "red" }} class="far fa-times-circle" />
+                    <i
+                      style={{ color: "red" }}
+                      className="far fa-times-circle"
+                    />
                   )}
                   {"  "}Ativo
                 </span>
