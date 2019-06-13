@@ -3,15 +3,21 @@ import axios from "axios";
 import CrmplusContext from "./crmplusContext";
 import CrmplusReducer from "./crmplusReducer";
 import {
-  DEL_USUARIO,
   ADD_USUARIO,
+  GET_USUARIOS,
+  DEL_USUARIO,
+  UPDATE_USUARIO,
   FILTER_USUARIO,
-  GET_USUARIOS
+  CLEAR_FILTER,
+  SET_CURRENT,
+  CLEAR_CURRENT
 } from "../types";
 
 const CrmplusState = props => {
   const initialState = {
     usuarioState: [],
+    current: null,
+    filtered: null,
     addUsuarioBtn: true,
     toggleAddUsuarioForm: true
   };
@@ -45,24 +51,47 @@ const CrmplusState = props => {
     });
   };
 
-  // Search Usuario
+  // Set current usuário
+  const setCurrent = usuario => {
+    dispatch({ type: SET_CURRENT, payload: usuario });
+  };
+
+  // Clear current usuário
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
+
+  // Update usuário
+  const updateUsuario = usuario => {
+    dispatch({ type: UPDATE_USUARIO, payload: usuario });
+  };
+
+  // Filter usuário
   const filterUsuario = text => {
-    dispatch({
-      type: FILTER_USUARIO,
-      payload: text
-    });
+    dispatch({ type: FILTER_USUARIO, payload: text });
+  };
+
+  // Clear Filter
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
   };
 
   return (
     <CrmplusContext.Provider
       value={{
         usuarioState: state.usuarioState,
+        filtered: state.filtered,
+        current: state.current,
         addUsuarioBtn: state.addUsuarioBtn,
         toggleAddUsuarioForm: state.toggleAddUsuarioForm,
         delUsuario,
         addUsuario,
         getUsuarios,
-        filterUsuario
+        filterUsuario,
+        clearFilter,
+        updateUsuario,
+        clearCurrent,
+        setCurrent
       }}
     >
       {props.children}

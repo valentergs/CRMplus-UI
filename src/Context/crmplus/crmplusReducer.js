@@ -2,6 +2,7 @@ import {
   DEL_USUARIO,
   ADD_USUARIO,
   FILTER_USUARIO,
+  CLEAR_USUARIO,
   GET_USUARIOS
 } from "../types";
 
@@ -27,7 +28,15 @@ export default (state, action) => {
     case FILTER_USUARIO:
       return {
         ...state,
-        usuarioState: action.payload
+        filtered: state.usuarioState.filter(x => {
+          const regex = new RegExp(`${action.payload}`, "gi");
+          return x.nome.match(regex) || x.sobrenome.match(regex);
+        })
+      };
+    case CLEAR_USUARIO:
+      return {
+        ...state,
+        filtered: null
       };
     default:
       return state;

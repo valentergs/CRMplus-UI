@@ -8,7 +8,8 @@ const DashBoard = () => {
 
   useEffect(() => {
     getUsuarios();
-  }, [crmplusContext, getUsuarios]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
