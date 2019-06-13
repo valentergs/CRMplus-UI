@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class Header extends Component {
   render() {
@@ -6,9 +7,7 @@ export class Header extends Component {
       <div>
         {/* <h3>This is a HEADER</h3> */}
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href="/">
-            CRMplus
-          </a>
+          <Link to="/">CRMplus</Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,19 +22,10 @@ export class Header extends Component {
           <div className="collapse navbar-collapse" id="navbarColor02">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <a href="/" className="nav-link">
-                  Contato
-                </a>
+                <Link to="/">Home</Link>
               </li>
               <li className="nav-item">
-                <a href="/" className="nav-link">
-                  Relatorio
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="/" className="nav-link">
-                  Forecast
-                </a>
+                <Link to="/about">About</Link>
               </li>
             </ul>
           </div>

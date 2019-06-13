@@ -1,0 +1,5 @@
+export const DEL_USUARIO = "DEL_USUARIO";
+export const ADD_USUARIO = "ADD_USUARIO";
+export const FILTER_USUARIO = "FILTER_USUARIO";
+export const CLEAR_USUARIO = "CLEAR_USUARIO";
+export const GET_USUARIOS = "GET_USUARIOS";
