@@ -5,7 +5,7 @@ const Home = () => {
     <div>
       <h1>About</h1>
       <p className="my-1">This is an about page</p>
-      <p className="bg-dark p">
+      <p>
         <strong>Version: </strong>1.0.0
       </p>
     </div>

@@ -21,12 +21,14 @@ const UsuariosFilter = () => {
   });
 
   return (
-    <form>
+    <form className="w-auto">
       <input
         type="text"
         ref={text}
         placeholder="Filtrar usuarios..."
         onChange={onChange}
+        style={{ width: "300px", marginTop: "15px" }}
+        className="rounded d-block"
       />
     </form>
   );

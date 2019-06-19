@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import UsuarioItem from "./UsuarioItem";
 import UsuarioFilter from "./UsuariosFilter";
-// import Spinner from "../Layout/Spinner";
+import AddUsuarioForm from "./AddUsuarioForm";
 import CRMplusContext from "../../Context/crmplus/crmplusContext";
 
 const Usuarios = () => {
@@ -13,6 +13,10 @@ const Usuarios = () => {
     // eslint-disable-next-line
   }, []);
 
+  if (usuarioState !== null && usuarioState.length === 0) {
+    return <h4>Please add a contact</h4>;
+  }
+
   return (
     <Fragment>
       <div className="container">
@@ -21,13 +25,24 @@ const Usuarios = () => {
             <UsuarioFilter />
             {filtered !== null
               ? filtered.map(usuario => (
-                  <UsuarioItem usuario={usuario} key={usuario.usuario_id} />
+                  <div key={usuario.usuario_id}>
+                    <UsuarioItem usuario={usuario} />
+                  </div>
                 ))
               : usuarioState.map(usuario => (
-                  <UsuarioItem usuario={usuario} key={usuario.usuario_id} />
+                  <div key={usuario.usuario_id}>
+                    <UsuarioItem usuario={usuario} />
+                  </div>
                 ))}
+            {/* {usuarioState.map(usuario => (
+              <div>
+                <UsuarioItem usuario={usuario} />
+              </div>
+            ))} */}
           </div>
-          <div className="col-md-5" />
+          <div className="col-md-5">
+            <AddUsuarioForm />
+          </div>
         </div>
       </div>
     </Fragment>

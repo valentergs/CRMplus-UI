@@ -4,7 +4,7 @@ import "./App.css";
 import Header from "./Components/Layout/Header";
 // import Usuario from "./Components/Usuario/Usuario";
 import Usuarios from "./Components/Usuario/Usuarios";
-import About from "./Components/pages/About";
+import About from "./Components/Pages/About";
 
 import CrmplusState from "./Context/crmplus/crmplusState";
 import DashBoard from "./Components/Dashboard/DashBoard";

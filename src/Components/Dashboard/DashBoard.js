@@ -16,9 +16,9 @@ const DashBoard = () => {
       <div className="container">
         <div className="row my-3">
           <div className="col-md-4">
-            <div className="card">
+            <div className="card shadow">
               <div className="card-header">
-                <Link to="/usuarios">
+                <Link style={{ textDecoration: "none" }} to="/usuarios">
                   <h3>Usuarios</h3>
                 </Link>
               </div>
@@ -28,7 +28,7 @@ const DashBoard = () => {
             </div>
           </div>
           <div className="col-md-4">
-            <div className="card">
+            <div className="card shadow rounded">
               <div className="card-header">
                 <h3>Clientes</h3>
               </div>
@@ -36,7 +36,7 @@ const DashBoard = () => {
             </div>
           </div>
           <div className="col-md-4">
-            <div className="card">
+            <div className="card shadow rounded">
               <div className="card-header">
                 <h3>Relatórios</h3>
               </div>

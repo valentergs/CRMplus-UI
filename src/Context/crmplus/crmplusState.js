@@ -43,11 +43,11 @@ const CrmplusState = props => {
   };
 
   // Add Usuario
-  const addUsuario = usuario => {
-    axios.post("http://localhost:8080/usuario/add");
+  const addUsuario = async usuario => {
+    const res = await axios.post("http://localhost:8080/usuario/add", usuario);
     dispatch({
       type: ADD_USUARIO,
-      payload: usuario
+      payload: res.data
     });
   };
 
