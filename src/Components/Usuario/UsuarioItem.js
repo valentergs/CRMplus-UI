@@ -3,7 +3,7 @@ import CRMplusContext from "../../Context/crmplus/crmplusContext";
 
 const UsuarioItem = ({ usuario }) => {
   const crmplusContext = useContext(CRMplusContext);
-  const { delUsuario } = crmplusContext;
+  const { delUsuario, setCurrent } = crmplusContext;
 
   const {
     usuario_id,
@@ -34,13 +34,23 @@ const UsuarioItem = ({ usuario }) => {
               {"  "}
               {sobrenome}
             </h5>
-            {/* BOTÃO DE APAGAR */}
-            <button className="btn btn-danger btn-sm" onClick={onDelete}>
-              Apagar
-            </button>
+            <p>
+              {/* BOTÃO DE EDITAR */}
+              <button
+                className="btn btn-dark btn-sm"
+                onClick={() => setCurrent(usuario)}
+              >
+                Editar
+              </button>
+              {/* BOTÃO DE APAGAR */}
+              <button className="btn btn-danger btn-sm" onClick={onDelete}>
+                Apagar
+              </button>
+            </p>
           </div>
           <div className="col-sm-3">
             <p>
+              {/* TAG DE SUPERUSER */}
               <span style={{ float: "left" }}>
                 {superuser === true ? (
                   <i
@@ -56,6 +66,7 @@ const UsuarioItem = ({ usuario }) => {
           </div>
           <div className="col-sm-2">
             <p>
+              {/* TAG DE ATIVO */}
               <span style={{ float: "left" }}>
                 {ativo === true ? (
                   <i

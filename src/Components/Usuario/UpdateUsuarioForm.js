@@ -1,21 +1,12 @@
 import React, { useEffect, useContext, useState } from "react";
 import CRMplusContext from "../../Context/crmplus/crmplusContext";
 
-const AddUsuarioForm = () => {
+const UpdateUsuarioForm = () => {
   const crmplusContext = useContext(CRMplusContext);
-  const { addUsuario, current, clearCurrent } = crmplusContext;
+  const { updateUsuario, current, clearCurrent } = crmplusContext;
 
   useEffect(() => {
-    setUsuario({
-      nome: "",
-      sobrenome: "",
-      senha: "",
-      email: "",
-      celular: "",
-      superuser: false,
-      ativo: false,
-      departamento: ""
-    });
+    setUsuario(current);
   }, [crmplusContext, current]);
 
   const [usuario, setUsuario] = useState({
@@ -32,7 +23,6 @@ const AddUsuarioForm = () => {
   const {
     nome,
     sobrenome,
-    senha,
     email,
     celular,
     superuser,
@@ -49,7 +39,7 @@ const AddUsuarioForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    addUsuario(usuario);
+    updateUsuario(usuario);
     clearAll();
   };
 
@@ -60,7 +50,7 @@ const AddUsuarioForm = () => {
   return (
     <div>
       <form onSubmit={onSubmit} method="post">
-        <h2 className="text-primary">Adicionar Usuário</h2>
+        <h2 className="text-primary">Editar Usuario</h2>
         <div className="form-group">
           <input
             type="text"
@@ -90,19 +80,6 @@ const AddUsuarioForm = () => {
             value={email}
             onChange={onChange}
           />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Senha"
-            name="senha"
-            value={senha}
-            onChange={onChange}
-          />
-          <small id="emailHelp" className="form-text text-muted">
-            Sua senha será encriptada em nosso Banco de Dados.
-          </small>
         </div>
         <div className="form-group">
           <input
@@ -150,13 +127,18 @@ const AddUsuarioForm = () => {
         <div>
           <input
             type="submit"
-            value="Adicionar Usuário"
+            value="Atualizar usuário"
             className="btn btn-primary btn-block"
           />
+        </div>
+        <div>
+          <button className="btn btn-light btn-block" onClick={clearAll}>
+            Cancelar
+          </button>
         </div>
       </form>
     </div>
   );
 };
 
-export default AddUsuarioForm;
+export default UpdateUsuarioForm;

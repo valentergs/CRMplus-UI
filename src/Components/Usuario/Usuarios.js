@@ -2,11 +2,12 @@ import React, { Fragment, useContext, useEffect } from "react";
 import UsuarioItem from "./UsuarioItem";
 import UsuarioFilter from "./UsuariosFilter";
 import AddUsuarioForm from "./AddUsuarioForm";
+import UpdateUsuarioForm from "./UpdateUsuarioForm";
 import CRMplusContext from "../../Context/crmplus/crmplusContext";
 
 const Usuarios = () => {
   const crmplusContext = useContext(CRMplusContext);
-  const { usuarioState, getUsuarios, filtered } = crmplusContext;
+  const { usuarioState, getUsuarios, filtered, current } = crmplusContext;
 
   useEffect(() => {
     getUsuarios();
@@ -34,14 +35,9 @@ const Usuarios = () => {
                     <UsuarioItem usuario={usuario} />
                   </div>
                 ))}
-            {/* {usuarioState.map(usuario => (
-              <div>
-                <UsuarioItem usuario={usuario} />
-              </div>
-            ))} */}
           </div>
           <div className="col-md-5">
-            <AddUsuarioForm />
+            {current ? <UpdateUsuarioForm /> : <AddUsuarioForm />}
           </div>
         </div>
       </div>

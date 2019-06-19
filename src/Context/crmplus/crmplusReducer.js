@@ -3,7 +3,10 @@ import {
   ADD_USUARIO,
   FILTER_USUARIO,
   CLEAR_USUARIO,
-  GET_USUARIOS
+  GET_USUARIOS,
+  SET_CURRENT,
+  UPDATE_USUARIO,
+  CLEAR_CURRENT
 } from "../types";
 
 export default (state, action) => {
@@ -37,6 +40,26 @@ export default (state, action) => {
       return {
         ...state,
         filtered: null
+      };
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: action.payload
+      };
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        current: null
+      };
+    case UPDATE_USUARIO:
+      return {
+        ...state,
+        usuarioState: state.usuarioState.map(usuario =>
+          usuario.usuario_id === action.payload.usuario_id
+            ? action.payload
+            : usuario
+        )
+        // usuarioState: [...state.usuarioState, action.payload]
       };
     default:
       return state;

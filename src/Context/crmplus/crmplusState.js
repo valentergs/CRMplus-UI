@@ -62,8 +62,12 @@ const CrmplusState = props => {
   };
 
   // Update usuário
-  const updateUsuario = usuario => {
-    dispatch({ type: UPDATE_USUARIO, payload: usuario });
+  const updateUsuario = async usuario => {
+    const res = await axios.put(
+      `http://localhost:8080/usuario/edit/${usuario.usuario_id}`,
+      usuario
+    );
+    dispatch({ type: UPDATE_USUARIO, payload: res.data });
   };
 
   // Filter usuário
