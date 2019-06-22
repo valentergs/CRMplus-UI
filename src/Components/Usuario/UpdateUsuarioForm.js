@@ -110,7 +110,7 @@ const UpdateUsuarioForm = () => {
           <input
             type="checkbox"
             name="superuser"
-            value={superuser}
+            checked={superuser}
             onChange={onChange}
           />
           <label style={{ marginLeft: "4px" }}>Superuser</label>
@@ -119,7 +119,7 @@ const UpdateUsuarioForm = () => {
             style={{ marginLeft: "15px" }}
             type="checkbox"
             name="ativo"
-            value={ativo}
+            checked={ativo}
             onChange={onChange}
           />
           <label style={{ marginLeft: "4px" }}>Ativo</label>
@@ -132,7 +132,11 @@ const UpdateUsuarioForm = () => {
           />
         </div>
         <div>
-          <button className="btn btn-light btn-block" onClick={clearAll}>
+          <button
+            className="btn btn-warning btn-block"
+            style={{ marginTop: "10px" }}
+            onClick={clearAll}
+          >
             Cancelar
           </button>
         </div>

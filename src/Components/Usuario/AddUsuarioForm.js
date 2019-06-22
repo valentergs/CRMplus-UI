@@ -133,7 +133,7 @@ const AddUsuarioForm = () => {
           <input
             type="checkbox"
             name="superuser"
-            value={superuser}
+            checked={superuser}
             onChange={onChange}
           />
           <label style={{ marginLeft: "4px" }}>Superuser</label>
@@ -142,7 +142,7 @@ const AddUsuarioForm = () => {
             style={{ marginLeft: "15px" }}
             type="checkbox"
             name="ativo"
-            value={ativo}
+            checked={ativo}
             onChange={onChange}
           />
           <label style={{ marginLeft: "4px" }}>Ativo</label>
