@@ -9,29 +9,34 @@ import Usuarios from "./Components/Usuario/Usuarios";
 import About from "./Components/Pages/About";
 import Register from "./Components/Auth/Register";
 import Login from "./Components/Auth/Login";
+import Alerts from "./Components/Layout/Alerts.js";
 
 // Contexts
 import CrmplusState from "./Context/crmplus/crmplusState";
-import AuthState from "./Context/auth/authState";
+import AuthState from "./Context/auth/AuthState";
+import AlertState from "./Context/alert/AlertState";
 
 const App = () => {
   return (
     <AuthState>
       <CrmplusState>
-        <Router>
-          <Fragment>
-            <Header />
-            <div className="container">
-              <Switch>
-                <Route exact path="/" component={DashBoard} />
-                <Route exact path="/usuarios" component={Usuarios} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/login" component={Login} />
-              </Switch>
-            </div>
-          </Fragment>
-        </Router>
+        <AlertState>
+          <Router>
+            <Fragment>
+              <Header />
+              <div className="container">
+                <Alerts />
+                <Switch>
+                  <Route exact path="/" component={DashBoard} />
+                  <Route exact path="/usuarios" component={Usuarios} />
+                  <Route exact path="/about" component={About} />
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path="/login" component={Login} />
+                </Switch>
+              </div>
+            </Fragment>
+          </Router>
+        </AlertState>
       </CrmplusState>
     </AuthState>
   );
