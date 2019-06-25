@@ -69,6 +69,7 @@ const AddUsuarioForm = () => {
             name="nome"
             value={nome}
             onChange={onChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -79,6 +80,7 @@ const AddUsuarioForm = () => {
             name="sobrenome"
             value={sobrenome}
             onChange={onChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -89,6 +91,7 @@ const AddUsuarioForm = () => {
             name="email"
             value={email}
             onChange={onChange}
+            required
           />
         </div>
         <div className="form-group">
@@ -99,6 +102,8 @@ const AddUsuarioForm = () => {
             name="senha"
             value={senha}
             onChange={onChange}
+            required
+            minLength="8"
           />
           <small id="emailHelp" className="form-text text-muted">
             Sua senha será encriptada em nosso Banco de Dados.
