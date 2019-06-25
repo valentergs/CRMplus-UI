@@ -4,7 +4,11 @@ import AuthContext from "../../Context/auth/authContext";
 
 const Header = () => {
   const authContext = useContext(AuthContext);
-  const { isAuthenticated } = authContext;
+  const { isAuthenticated, logout, user } = authContext;
+
+  const onLogout = () => {
+    logout();
+  };
 
   return (
     <div>
@@ -46,21 +50,26 @@ const Header = () => {
               </Link>
             </li>
           </ul>
-          <ul className="nav navbar-nav navbar-right">
-            {isAuthenticated ? (
+          {isAuthenticated ? (
+            <ul className="nav navbar-nav navbar-right">
               <li className="nav-item">
-                <Link className="nav-link" to="/register">
-                  Acesso autorizado!
+                <div className="nav-link">Olá {user && user.nome}!</div>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login" onClick={onLogout}>
+                  <i className="fas fa-sign-out-alt" /> Logout
                 </Link>
               </li>
-            ) : (
-              <span className="nav-item">
+            </ul>
+          ) : (
+            <ul className="nav navbar-nav navbar-right">
+              <li className="nav-item">
                 <Link className="nav-link" to="/login">
                   Login
                 </Link>
-              </span>
-            )}
-          </ul>
+              </li>
+            </ul>
+          )}
         </div>
       </nav>
     </div>
