@@ -14,7 +14,7 @@ const Login = props => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push("/");
+      props.history.push("/dashboard");
     }
   }, [isAuthenticated, props.history]);
 
@@ -30,12 +30,17 @@ const Login = props => {
 
   return (
     <div className="form-container">
-      <h1>
+      <h1 style={{ padding: "30px" }}>
         Account <span className="text-primary">Login</span>
       </h1>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label
+            htmlFor="email"
+            style={{ marginRight: "30px", fontSize: "125%" }}
+          >
+            E-mail
+          </label>
           <input
             type="email"
             name="email"
@@ -45,7 +50,12 @@ const Login = props => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="senha">Senha</label>
+          <label
+            htmlFor="senha"
+            style={{ marginRight: "30px", fontSize: "125%" }}
+          >
+            Senha
+          </label>
           <input
             type="password"
             name="senha"
@@ -59,6 +69,13 @@ const Login = props => {
           value="Login"
           className="btn btn-primary btn-block"
         />
+
+        {/* <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div> */}
       </form>
     </div>
   );

@@ -70,6 +70,11 @@ const AuthState = props => {
 
   // Logout
 
+  const logout = () =>
+    dispatch({
+      type: LOGOUT
+    });
+
   // Clear Errors
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -83,7 +88,8 @@ const AuthState = props => {
         loading: state.loading,
         user: state.user,
         loadUser,
-        login
+        login,
+        logout
       }}
     >
       {props.children}

@@ -30,8 +30,8 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarColor02">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Home
+              <Link className="nav-link" to="/dashboard">
+                Dashboard
               </Link>
             </li>
             <li className="nav-item">
@@ -56,7 +56,7 @@ const Header = () => {
                 <div className="nav-link">Olá {user && user.nome}!</div>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/login" onClick={onLogout}>
+                <Link className="nav-link" to="/" onClick={onLogout}>
                   <i className="fas fa-sign-out-alt" /> Logout
                 </Link>
               </li>
@@ -64,7 +64,7 @@ const Header = () => {
           ) : (
             <ul className="nav navbar-nav navbar-right">
               <li className="nav-item">
-                <Link className="nav-link" to="/login">
+                <Link className="nav-link" to="/">
                   Login
                 </Link>
               </li>
