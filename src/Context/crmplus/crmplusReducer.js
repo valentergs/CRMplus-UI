@@ -54,6 +54,7 @@ export default (state, action) => {
     case UPDATE_USUARIO:
       return {
         ...state,
+        // Poderia usar state.usuarioState.find() no lugar de map()
         usuarioState: state.usuarioState.map(usuario =>
           usuario.usuario_id === action.payload.usuario_id
             ? action.payload
